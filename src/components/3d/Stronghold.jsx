@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import MemoryShard from './MemoryShard';
 
 function Stronghold(props) {
-    const { scene, animations } = useGLTF('/src/assets/models/a_regular_day_in_neo-tokyo/scene.gltf');
+    const { scene, animations } = useGLTF('/models/a_regular_day_in_neo-tokyo/scene.gltf');
 
     const { actions } = useAnimations(animations, scene);
     useEffect(() => {
@@ -111,6 +111,6 @@ function Stronghold(props) {
     );
 }
 
-useGLTF.preload('/src/assets/models/a_regular_day_in_neo-tokyo/scene.gltf');
+useGLTF.preload('/models/a_regular_day_in_neo-tokyo/scene.gltf');
 
 export default Stronghold;

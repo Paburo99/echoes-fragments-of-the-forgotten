@@ -5,7 +5,7 @@ import * as THREE from 'three';
 
 function MemoryShard({ position, color, onClick, clickable = true }) {
     const groupRef = useRef();
-    const { scene } = useGLTF('/src/assets/models/crystal_shard.glb');
+    const { scene } = useGLTF('/models/crystal_shard.glb');
 
     const clone = useMemo(() => scene.clone(), [scene]);
 
@@ -63,6 +63,6 @@ function MemoryShard({ position, color, onClick, clickable = true }) {
     );
 }
 
-useGLTF.preload('/src/assets/models/crystal_shard.glb');
+useGLTF.preload('/models/crystal_shard.glb');
 
 export default MemoryShard;
