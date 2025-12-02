@@ -1,0 +1,306 @@
+.formPage {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--nier-black);
+    color: var(--nier-beige);
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Chromatic Aberration Effect */
+.bgContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0;
+    background-color: #000;
+}
+
+.bgLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    mix-blend-mode: screen;
+    opacity: 0.6;
+}
+
+.bgLayerRed {
+    animation: chromatic-red 4s infinite ease-in-out alternate;
+    filter: sepia(100%) saturate(300%) hue-rotate(-50deg) contrast(1.2);
+}
+
+.bgLayerGreen {
+    animation: chromatic-green 5s infinite ease-in-out alternate-reverse;
+    filter: sepia(100%) saturate(300%) hue-rotate(80deg) contrast(1.2);
+    opacity: 0.4;
+}
+
+.bgLayerBlue {
+    animation: chromatic-blue 3s infinite ease-in-out alternate;
+    filter: sepia(100%) saturate(300%) hue-rotate(180deg) contrast(1.2);
+}
+
+.bgOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.3) 2px,
+            rgba(0, 0, 0, 0.3) 4px);
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+}
+
+@keyframes chromatic-red {
+    0% {
+        transform: translate(0, 0) scale(1.05);
+        opacity: 0.5;
+    }
+
+    25% {
+        transform: translate(-3px, 1px) scale(1.06);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translate(2px, -2px) scale(1.05);
+        opacity: 0.5;
+    }
+
+    75% {
+        transform: translate(-1px, 3px) scale(1.06);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(3px, 0) scale(1.05);
+        opacity: 0.5;
+    }
+}
+
+@keyframes chromatic-green {
+    0% {
+        transform: translate(0, 0) scale(1.05);
+    }
+
+    33% {
+        transform: translate(3px, -1px) scale(1.06);
+    }
+
+    66% {
+        transform: translate(-2px, 2px) scale(1.05);
+    }
+
+    100% {
+        transform: translate(1px, -3px) scale(1.06);
+    }
+}
+
+@keyframes chromatic-blue {
+    0% {
+        transform: translate(0, 0) scale(1.05);
+        opacity: 0.5;
+    }
+
+    25% {
+        transform: translate(2px, 2px) scale(1.06);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translate(-3px, -1px) scale(1.05);
+        opacity: 0.5;
+    }
+
+    75% {
+        transform: translate(1px, -2px) scale(1.06);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(-2px, 1px) scale(1.05);
+        opacity: 0.5;
+    }
+}
+
+/* Scanlines */
+.formPage::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0) 50%,
+            rgba(0, 0, 0, 0.1) 50%,
+            rgba(0, 0, 0, 0.1));
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 998;
+}
+
+.formContainer {
+    width: 100%;
+    max-width: 600px;
+    padding: 3rem;
+    background: rgba(10, 10, 10, 0.85);
+    border: 1px solid var(--nier-beige);
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+}
+
+.formContainer::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--nier-beige);
+    border-left: 2px solid var(--nier-beige);
+}
+
+.formContainer::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--nier-beige);
+    border-right: 2px solid var(--nier-beige);
+}
+
+.formTitle {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    border-bottom: 1px solid var(--nier-rust);
+    padding-bottom: 1rem;
+}
+
+.formSubtitle {
+    text-align: center;
+    opacity: 0.7;
+    margin-bottom: 3rem;
+    font-size: 0.9rem;
+}
+
+.formGroup {
+    margin-bottom: 2rem;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--nier-rust);
+    color: var(--nier-beige);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    padding: 0.8rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+    border-color: var(--nier-beige);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(218, 212, 187, 0.1);
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--nier-dark);
+    color: var(--nier-beige);
+    border: 1px solid var(--nier-beige);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+.submitBtn:hover:not(:disabled) {
+    background: var(--nier-beige);
+    color: var(--nier-black);
+}
+
+.submitBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.backLink {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--nier-rust);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.3s;
+}
+
+.backLink:hover {
+    color: var(--nier-beige);
+}
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    padding: 1rem 2rem;
+    background: var(--nier-dark);
+    color: var(--nier-beige);
+    border: 1px solid var(--nier-beige);
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.toast.success {
+    border-left: 5px solid var(--nier-beige);
+}
+
+.toast.error {
+    border-left: 5px solid var(--nier-alert);
+}

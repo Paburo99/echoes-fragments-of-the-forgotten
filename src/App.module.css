@@ -1,0 +1,117 @@
+.nav {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 30;
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 2rem;
+  background: rgba(10, 10, 10, 0.75);
+
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.nav::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 25px;
+  height: 25px;
+  border-top: 2px solid var(--nier-beige);
+  border-left: 2px solid var(--nier-beige);
+}
+
+.nav::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 25px;
+  height: 25px;
+  border-bottom: 2px solid var(--nier-beige);
+  border-right: 2px solid var(--nier-beige);
+}
+
+.navLink {
+  color: var(--nier-beige);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 2px;
+  position: relative;
+  padding: 0.5rem 1rem;
+}
+
+.navLink::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--nier-beige);
+  transform: translateY(-50%) scale(0);
+  transition: transform 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--nier-dark);
+  background: var(--nier-beige);
+  box-shadow: 0 0 10px rgba(218, 212, 187, 0.3);
+}
+
+.navLink:hover::before {
+  transform: translateY(-50%) scale(1);
+  left: -10px;
+}
+
+.musicButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  background: var(--nier-dark);
+  border: 1px solid var(--nier-beige);
+  color: var(--nier-beige);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.musicButton:hover {
+  background: var(--nier-beige);
+  color: var(--nier-dark);
+  box-shadow: 0 0 15px rgba(218, 212, 187, 0.4);
+  transform: none;
+}
+
+.musicButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.musicButton::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid var(--nier-rust);
+  border-right: 2px solid var(--nier-rust);
+  transition: all 0.3s ease;
+}
+
+.musicButton:hover::after {
+  border-color: var(--nier-dark);
+}
