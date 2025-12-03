@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import gsap from 'gsap';
 import styles from './Form.module.css';
-import bgImage from '/src/assets/images/gallery/shot8.mipmap.w1920.avif';
+import bgImage from '../../assets/images/bg_form.avif';
 
 function Form() {
   const [formData, setFormData] = useState({

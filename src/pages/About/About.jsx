@@ -2,20 +2,18 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import styles from './About.module.css';
-import heroBg from '/src/assets/images/gallery/shot2.mipmap.w1920.avif';
+import bgHero from '../../assets/images/bg_about.avif';
 import PixelatedReveal from '../../components/ui/PixelatedReveal';
 
 const GALLERY_IMAGES = [
-  '/src/assets/images/gallery/shot8.mipmap.w1920.avif',
-  '/src/assets/images/gallery/shot2.mipmap.w1920.webp',
-  '/src/assets/images/gallery/shot11.mipmap.w1920.avif',
-  '/src/assets/images/gallery/shot7.mipmap.w1920.webp',
-  '/src/assets/images/gallery/shot5.mipmap.w1920.webp',
-  '/src/assets/images/gallery/shot10.mipmap.w1920.webp',
-  '/src/assets/images/gallery/shot2.mipmap.w1920.avif',
-  '/src/assets/images/gallery/shot6.mipmap.w1920.avif',
-  '/src/assets/images/gallery/shot0.mipmap.w1920.webp',
-  '/src/assets/images/gallery/shot7.mipmap.w1920.avif'
+  '/gallery/shot2.mipmap.w1920.webp',
+  '/gallery/shot7.mipmap.w1920.webp',
+  '/gallery/shot5.mipmap.w1920.webp',
+  '/gallery/shot10.mipmap.w1920.webp',
+  '/gallery/shot2.mipmap.w1920.avif',
+  '/gallery/shot6.mipmap.w1920.avif',
+  '/gallery/shot0.mipmap.w1920.webp',
+  '/gallery/shot7.mipmap.w1920.avif'
 ];
 
 const ROADMAP = [
@@ -84,11 +82,11 @@ export default function About() {
       {/* --- HERO SECTION ---*/}
       <header className={styles.heroSection} ref={heroRef} onMouseMove={handleMouseMove}>
         <div className={styles.heroBgContainer}>
-          <div className={`${styles.heroBg} ${styles.heroBgBW}`} style={{ backgroundImage: `url(${heroBg})` }}></div>
+          <div className={`${styles.heroBg} ${styles.heroBgBW}`} style={{ backgroundImage: `url(${bgHero})` }}></div>
           <div className={styles.heroBgReveal}>
             <PixelatedReveal
               ref={revealRef}
-              src={heroBg}
+              src={bgHero}
               gridSize={15}
               decay={0.97}
               diffusion={0.18}
@@ -224,7 +222,7 @@ export default function About() {
             Entrust them to the archive, and they will never fade.
           </p>
           <Link to="/form" className={styles.ctaButton}>
-            SAVE_YOUR_MEMORY
+            SAVE_A_MEMORY
           </Link>
         </div>
       </section>

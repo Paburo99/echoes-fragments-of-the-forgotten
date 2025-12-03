@@ -15,30 +15,30 @@ const DEV_MODE = false;
 
 const EMOTION_MUSIC = {
     hope: [
-        '/src/assets/music/hope/hope1.mp3',
-        '/src/assets/music/hope/hope2.mp3',
-        '/src/assets/music/hope/hope3.mp3'
+        '/music/hope/hope1.mp3',
+        '/music/hope/hope2.mp3',
+        '/music/hope/hope3.mp3'
     ],
     sorrow: [
-        '/src/assets/music/sorrow/sorrow1.mp3',
-        '/src/assets/music/sorrow/sorrow2.mp3',
-        '/src/assets/music/sorrow/sorrow3.mp3',
-        '/src/assets/music/sorrow/sorrow4.mp3'
+        '/music/sorrow/sorrow1.mp3',
+        '/music/sorrow/sorrow2.mp3',
+        '/music/sorrow/sorrow3.mp3',
+        '/music/sorrow/sorrow4.mp3'
     ],
     joy: [
-        '/src/assets/music/joy/joy1.mp3',
-        '/src/assets/music/joy/joy2.mp3',
-        '/src/assets/music/joy/joy3.mp3'
+        '/music/joy/joy1.mp3',
+        '/music/joy/joy2.mp3',
+        '/music/joy/joy3.mp3'
     ],
     fear: [
-        '/src/assets/music/fear/fear1.mp3',
-        '/src/assets/music/fear/fear2.mp3',
-        '/src/assets/music/fear/fear3.mp3'
+        '/music/fear/fear1.mp3',
+        '/music/fear/fear2.mp3',
+        '/music/fear/fear3.mp3'
     ],
     anger: [
-        '/src/assets/music/anger/anger1.mp3',
-        '/src/assets/music/anger/anger2.mp3',
-        '/src/assets/music/anger/anger3.mp3'
+        '/music/anger/anger1.mp3',
+        '/music/anger/anger2.mp3',
+        '/music/anger/anger3.mp3'
     ]
 };
 
