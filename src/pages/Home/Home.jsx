@@ -94,7 +94,7 @@ const SHARD_CONFIGS = [
 
     return {
         ...config,
-        position: [point.x * offsetScale, point.y, point.z * offsetScale]
+        position: [point.x * offsetScale, point.y * 0.9, point.z * offsetScale]
     };
 });
 
@@ -248,7 +248,15 @@ function Home() {
         }, 2000);
     }, [navigate]);
 
-    const isMobile = window.innerWidth < 768;
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <div className={styles.homeContainer}>
@@ -300,6 +308,7 @@ function Home() {
             {/* --- 3D LAYER --- */}
             <Canvas
                 shadows={{ type: THREE.PCFSoftShadowMap }}
+                camera={{ fov: isMobile ? 75 : 50 }}
             >
 
                 {/* DEV MODE: Free camera controls */}

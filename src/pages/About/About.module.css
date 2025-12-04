@@ -1,546 +1,668 @@
 .aboutPage {
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--nier-beige);
-  color: var(--nier-dark);
-  font-family: 'Courier New', Courier, monospace;
-  overflow-x: hidden;
-  position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--nier-beige);
+    color: var(--nier-dark);
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .aboutPage::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 999;
-  opacity: 0.15;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.15;
 }
 
 /* Scanline Effect */
 .aboutPage::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0) 50%,
-      rgba(0, 0, 0, 0.05) 50%,
-      rgba(0, 0, 0, 0.05));
-  background-size: 100% 4px;
-  pointer-events: none;
-  z-index: 998;
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0) 50%,
+            rgba(0, 0, 0, 0.05) 50%,
+            rgba(0, 0, 0, 0.05));
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 998;
 }
 
 /* --- HERO SECTION --- */
 .heroSection {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border-bottom: 1px solid rgba(43, 43, 43, 0.2);
-  overflow: hidden;
-  --mouse-x: 50%;
-  --mouse-y: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid rgba(43, 43, 43, 0.2);
+    overflow: hidden;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
 }
 
 .heroBgContainer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .heroBg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.1s ease-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.1s ease-out;
 }
 
 .heroBgBW {
-  filter: grayscale(100%) contrast(1.2) brightness(0.5);
-  z-index: 1;
+    filter: grayscale(100%) contrast(1.2) brightness(0.5);
+    z-index: 1;
 }
 
 .heroBgReveal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  filter: contrast(1.1) brightness(0.9);
-  pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    filter: contrast(1.1) brightness(0.9);
+    pointer-events: none;
 }
 
 /* --- HERO CONTENT --- */
 .heroContent {
-  text-align: center;
-  z-index: 10;
-  position: relative;
-  background: var(--nier-beige);
-  padding: 4rem 5rem;
-  border: 1px solid var(--nier-dark);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 10;
+    position: relative;
+    background: var(--nier-beige);
+    padding: 4rem 5rem;
+    border: 1px solid var(--nier-dark);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 }
 
 .heroContent::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: 20px;
-  height: 20px;
-  border-top: 2px solid var(--nier-rust);
-  border-left: 2px solid var(--nier-rust);
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--nier-rust);
+    border-left: 2px solid var(--nier-rust);
 }
 
 .heroContent::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  right: -2px;
-  width: 20px;
-  height: 20px;
-  border-bottom: 2px solid var(--nier-rust);
-  border-right: 2px solid var(--nier-rust);
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--nier-rust);
+    border-right: 2px solid var(--nier-rust);
 }
 
 .heroTitle {
-  font-size: 4rem;
-  font-weight: 900;
-  letter-spacing: 0.5rem;
-  margin: 0;
-  text-transform: uppercase;
-  color: var(--nier-dark);
-  position: relative;
-  display: inline-block;
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 0.5rem;
+    margin: 0;
+    text-transform: uppercase;
+    color: var(--nier-dark);
+    position: relative;
+    display: inline-block;
 }
 
 /* Glitch effect */
 .heroTitle::before,
 .heroTitle::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--nier-beige);
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--nier-beige);
 }
 
 .heroTitle::before {
-  left: 2px;
-  text-shadow: -1px 0 #ff0800;
-  clip: rect(44px, 450px, 56px, 0);
-  animation: glitch-anim 5s infinite linear alternate-reverse;
+    left: 2px;
+    text-shadow: -1px 0 #ff0800;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
 }
 
 .heroTitle::after {
-  left: -2px;
-  text-shadow: -1px 0 #00c3ff;
-  clip: rect(44px, 450px, 56px, 0);
-  animation: glitch-anim2 5s infinite linear alternate-reverse;
+    left: -2px;
+    text-shadow: -1px 0 #00c3ff;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-anim {
-  0% {
-    clip: rect(14px, 9999px, 127px, 0);
-  }
+    0% {
+        clip: rect(14px, 9999px, 127px, 0);
+    }
 
-  5% {
-    clip: rect(81px, 9999px, 19px, 0);
-  }
+    5% {
+        clip: rect(81px, 9999px, 19px, 0);
+    }
 
-  10% {
-    clip: rect(6px, 9999px, 14px, 0);
-  }
+    10% {
+        clip: rect(6px, 9999px, 14px, 0);
+    }
 
-  15% {
-    clip: rect(98px, 9999px, 100px, 0);
-  }
+    15% {
+        clip: rect(98px, 9999px, 100px, 0);
+    }
 
-  20% {
-    clip: rect(2px, 9999px, 86px, 0);
-  }
+    20% {
+        clip: rect(2px, 9999px, 86px, 0);
+    }
 
-  100% {
-    clip: rect(68px, 9999px, 2px, 0);
-  }
+    100% {
+        clip: rect(68px, 9999px, 2px, 0);
+    }
 }
 
 @keyframes glitch-anim2 {
-  0% {
-    clip: rect(65px, 9999px, 100px, 0);
-  }
+    0% {
+        clip: rect(65px, 9999px, 100px, 0);
+    }
 
-  5% {
-    clip: rect(52px, 9999px, 74px, 0);
-  }
+    5% {
+        clip: rect(52px, 9999px, 74px, 0);
+    }
 
-  10% {
-    clip: rect(79px, 9999px, 85px, 0);
-  }
+    10% {
+        clip: rect(79px, 9999px, 85px, 0);
+    }
 
-  15% {
-    clip: rect(15px, 9999px, 5px, 0);
-  }
+    15% {
+        clip: rect(15px, 9999px, 5px, 0);
+    }
 
-  20% {
-    clip: rect(3px, 9999px, 115px, 0);
-  }
+    20% {
+        clip: rect(3px, 9999px, 115px, 0);
+    }
 
-  100% {
-    clip: rect(117px, 9999px, 3px, 0);
-  }
+    100% {
+        clip: rect(117px, 9999px, 3px, 0);
+    }
 }
 
 .heroSubtitle {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  letter-spacing: 0.2rem;
-  opacity: 0.8;
-  border-top: 1px solid var(--nier-dark);
-  padding-top: 1rem;
-  display: inline-block;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    letter-spacing: 0.2rem;
+    opacity: 0.8;
+    border-top: 1px solid var(--nier-dark);
+    padding-top: 1rem;
+    display: inline-block;
 }
 
 .scrollIndicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.8rem;
-  opacity: 0.6;
-  animation: blink 2s infinite;
+    position: relative;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    opacity: 0.6;
+    animation: blink 2s infinite;
 }
 
 @keyframes blink {
 
-  0%,
-  100% {
-    opacity: 0.6;
-  }
+    0%,
+    100% {
+        opacity: 0.6;
+    }
 
-  50% {
-    opacity: 0.2;
-  }
+    50% {
+        opacity: 0.2;
+    }
 }
 
 /* --- ABOUT SECTION --- */
 .aboutSection {
-  padding: 8rem 2rem;
-  position: relative;
+    padding: 8rem 2rem;
+    position: relative;
 }
 
 .sectionInner {
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .sectionTitle {
-  font-size: 2.5rem;
-  margin-bottom: 4rem;
-  text-transform: uppercase;
-  border-left: 5px solid var(--nier-dark);
-  padding-left: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    border-left: 5px solid var(--nier-dark);
+    padding-left: 1rem;
 }
 
 .loreGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  margin-bottom: 6rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 6rem;
 }
 
 /* SHARD CARD STYLE */
 .loreCard {
-  background: rgba(43, 43, 43, 0.05);
-  padding: 2rem;
-  position: relative;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 90% 100%, 0% 100%);
-  border: 1px solid rgba(43, 43, 43, 0.3);
-  transition: transform 0.3s ease, background 0.3s ease;
+    background: rgba(43, 43, 43, 0.05);
+    padding: 2rem;
+    position: relative;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 90% 100%, 0% 100%);
+    border: 1px solid rgba(43, 43, 43, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .loreCard::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--nier-dark);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--nier-dark);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
 }
 
 .loreCard:hover {
-  background: rgba(43, 43, 43, 0.1);
-  transform: translateY(-5px);
+    background: rgba(43, 43, 43, 0.1);
+    transform: translateY(-5px);
 }
 
 .loreCard:hover::before {
-  transform: scaleX(1);
+    transform: scaleX(1);
 }
 
 .loreIcon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--nier-rust);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--nier-rust);
 }
 
 .loreCard h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .loreCard p {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  opacity: 0.8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.8;
 }
 
 /* --- ROADMAP --- */
 .roadmapContainer {
-  margin-top: 6rem;
-  border: 1px solid rgba(43, 43, 43, 0.2);
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.3);
+    margin-top: 6rem;
+    border: 1px solid rgba(43, 43, 43, 0.2);
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .roadmapTitle {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  text-transform: uppercase;
-  border-bottom: 1px dashed var(--nier-dark);
-  padding-bottom: 0.5rem;
-  display: inline-block;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    border-bottom: 1px dashed var(--nier-dark);
+    padding-bottom: 0.5rem;
+    display: inline-block;
 }
 
 .roadmapTimeline {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .roadmapItem {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  opacity: 0.5;
-  transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.5;
+    transition: opacity 0.3s;
 }
 
 .roadmapItem.done,
 .roadmapItem.progress {
-  opacity: 1;
+    opacity: 1;
 }
 
 .roadmapDot {
-  width: 10px;
-  height: 10px;
-  background: var(--nier-dark);
-  transform: rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: var(--nier-dark);
+    transform: rotate(45deg);
 }
 
 .roadmapItem.progress .roadmapDot {
-  background: var(--nier-alert);
-  box-shadow: 0 0 10px var(--nier-alert);
-  animation: pulse 1.5s infinite;
+    background: var(--nier-alert);
+    box-shadow: 0 0 10px var(--nier-alert);
+    animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(205, 102, 77, 0.7);
-  }
+    0% {
+        box-shadow: 0 0 0 0 rgba(205, 102, 77, 0.7);
+    }
 
-  70% {
-    box-shadow: 0 0 0 10px rgba(205, 102, 77, 0);
-  }
+    70% {
+        box-shadow: 0 0 0 10px rgba(205, 102, 77, 0);
+    }
 
-  100% {
-    box-shadow: 0 0 0 0 rgba(205, 102, 77, 0);
-  }
+    100% {
+        box-shadow: 0 0 0 0 rgba(205, 102, 77, 0);
+    }
 }
 
 .roadmapLabel {
-  font-family: 'Courier New', Courier, monospace;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* --- GALLERY --- */
 .gallerySection {
-  padding: 4rem 2rem;
-  background: var(--nier-dark);
-  color: var(--nier-beige);
-  position: relative;
-  overflow: hidden;
+    padding: 4rem 2rem;
+    background: var(--nier-dark);
+    color: var(--nier-beige);
+    position: relative;
+    overflow: hidden;
 }
 
 .gallerySection .sectionTitle {
-  border-left-color: var(--nier-beige);
+    border-left-color: var(--nier-beige);
 }
 
 .galleryGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
 }
 
 .galleryItem {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  cursor: pointer;
-  filter: grayscale(100%) contrast(1.2);
-  transition: filter 0.3s ease, transform 0.3s ease;
-  border: 1px solid rgba(218, 212, 187, 0.2);
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    cursor: pointer;
+    filter: grayscale(100%) contrast(1.2);
+    transition: filter 0.3s ease, transform 0.3s ease;
+    border: 1px solid rgba(218, 212, 187, 0.2);
 }
 
 .galleryItem:hover {
-  filter: grayscale(0%) contrast(1);
-  transform: scale(1.02);
-  z-index: 10;
-  border-color: var(--nier-beige);
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.02);
+    z-index: 10;
+    border-color: var(--nier-beige);
 }
 
 .galleryItem img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .galleryOverlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 0.5rem;
-  background: rgba(0, 0, 0, 0.8);
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
-  font-size: 0.8rem;
-  text-align: center;
-  text-transform: uppercase;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 .galleryItem:hover .galleryOverlay {
-  transform: translateY(0);
+    transform: translateY(0);
 }
 
 /* Lightbox */
 .lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.95);
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
 }
 
 .lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border: 2px solid var(--nier-beige);
-  box-shadow: 0 0 20px rgba(218, 212, 187, 0.2);
+    max-width: 90%;
+    max-height: 90%;
+    border: 2px solid var(--nier-beige);
+    box-shadow: 0 0 20px rgba(218, 212, 187, 0.2);
 }
 
 .lightboxClose {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  background: none;
-  border: none;
-  color: var(--nier-beige);
-  font-size: 3rem;
-  cursor: pointer;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: var(--nier-beige);
+    font-size: 3rem;
+    cursor: pointer;
 }
 
 /* --- CTA --- */
 .ctaSection {
-  padding: 6rem 2rem;
-  text-align: center;
-  background: var(--nier-beige);
-  border-top: 1px solid var(--nier-dark);
+    padding: 6rem 2rem;
+    text-align: center;
+    background: var(--nier-beige);
+    border-top: 1px solid var(--nier-dark);
 }
 
 .ctaTitle {
-  font-size: 3rem;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
 }
 
 .ctaButton {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 1rem 3rem;
-  background: var(--nier-dark);
-  color: var(--nier-beige);
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 2px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    background: var(--nier-dark);
+    color: var(--nier-beige);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .ctaButton:hover {
-  background: var(--nier-alert);
-  color: white;
-  box-shadow: 0 0 15px var(--nier-alert);
+    background: var(--nier-alert);
+    color: white;
+    box-shadow: 0 0 15px var(--nier-alert);
 }
 
 /* --- FOOTER --- */
 .footer {
-  background: var(--nier-black);
-  color: #555;
-  padding: 4rem 2rem;
-  text-align: center;
-  font-size: 0.8rem;
-  border-top: 1px solid #333;
+    background: var(--nier-black);
+    color: #555;
+    padding: 4rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    border-top: 1px solid #333;
 }
 
 .footerNav {
-  margin: 2rem 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .footerNav a {
-  color: #888;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: color 0.3s;
+    color: #888;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
 }
 
 .footerNav a:hover {
-  color: var(--nier-beige);
+    color: var(--nier-beige);
+}
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+    .heroContent {
+        margin: 0 1rem;
+    }
+
+    .heroTitle {
+        font-size: 3rem;
+    }
+
+    .sectionTitle {
+        font-size: 2rem;
+    }
+
+    .loreGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .heroContent {
+        padding: 1.8rem;
+        width: 90%;
+    }
+
+    .heroTitle {
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .heroSubtitle {
+        font-size: 0.8rem;
+    }
+
+    .aboutSection {
+        padding: 4rem 1rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .loreGrid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .loreCard {
+        padding: 1.5rem;
+    }
+
+    .roadmapContainer {
+        padding: 1rem;
+        margin-top: 4rem;
+    }
+
+    .galleryGrid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .ctaTitle {
+        font-size: 1.8rem;
+    }
+
+    .ctaButton {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .footerContent {
+        flex-direction: column;
+    }
+
+    .footerNav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroTitle {
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .heroSubtitle {
+        font-size: 0.7rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.4rem;
+    }
+
+    .loreCard {
+        padding: 1rem;
+    }
+
+    .loreIcon {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .loreCard h3 {
+        font-size: 1.2rem;
+    }
+
+    .loreCard p {
+        font-size: 0.8rem;
+    }
+
+    .ctaTitle {
+        font-size: 1.5rem;
+    }
+
+    .ctaButton {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.8rem;
+    }
 }

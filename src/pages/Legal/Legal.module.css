@@ -173,3 +173,66 @@ a.creditName {
     color: var(--nier-dark);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .contentContainer {
+        width: 85%;
+        margin: 4rem auto;
+        padding: 2rem;
+    }
+
+    .pageTitle {
+        font-size: 2.5rem;
+        letter-spacing: 0.3rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contentContainer {
+        width: 95%;
+        margin: 2rem auto;
+        padding: 1.5rem;
+    }
+
+    .pageTitle {
+        font-size: 1.8rem;
+        letter-spacing: 0.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.1rem;
+        letter-spacing: 0.1rem;
+        border-left-width: 3px;
+    }
+
+    .disclaimerText {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
+    .creditItem {
+        margin-bottom: 1rem;
+        padding-bottom: 0.8rem;
+    }
+
+    .creditName {
+        font-size: 1rem;
+        display: block;
+        margin-top: 0.2rem;
+    }
+
+    .backButton {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}

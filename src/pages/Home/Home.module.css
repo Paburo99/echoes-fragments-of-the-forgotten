@@ -303,34 +303,107 @@
 
 .modalButton:hover {
   background: var(--nier-beige);
+  margin: 0 auto;
+}
+
+.modalButton:hover {
+  background: var(--nier-beige);
   color: var(--nier-beige);
   box-shadow: 0 0 20px rgba(220, 216, 192, 0.6);
   transform: translateY(-2px);
 }
 
-/* MOBILE STYLES */
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+  .heroTitle {
+    font-size: 4rem;
+  }
+
+  .heroContainer {
+    top: 10%;
+    left: 5%;
+  }
+}
+
 @media (max-width: 768px) {
   .heroTitle {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
   }
 
   .heroSubtitle {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
   }
 
   .heroContainer {
     padding: 1rem;
-    top: 2%;
+    top: 5%;
     left: 2%;
+    width: 90%;
   }
 
   .modalContent {
     padding: 1.5rem;
+    width: 95%;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .modalContent h2 {
+    font-size: 1.5rem;
   }
 
   .instructions {
     bottom: 1rem;
     left: 1rem;
+    transform: none;
+    width: auto;
+    max-width: 70%;
+    padding: 0.8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+    border-left: 2px solid var(--nier-beige);
+    border-top: none;
+  }
+
+  .instructionItem p {
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .heroSubtitle {
+    font-size: 0.8rem;
+  }
+
+  .heroContainer {
     padding: 0.5rem;
+    width: 95%;
+  }
+
+  .instructions {
+    bottom: 0.5rem;
+    left: 0.5rem;
+    padding: 0.5rem;
+    max-width: 80%;
+  }
+
+  .modalContent {
+    padding: 1rem;
+    width: 98%;
+  }
+
+  .modalContent h2 {
+    font-size: 1.2rem;
   }
 }

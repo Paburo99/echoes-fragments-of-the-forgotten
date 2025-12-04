@@ -88,8 +88,9 @@ function Legal() {
                     <p className={styles.disclaimerText}>
                         This project, "ECHOES", is created solely for educational purposes.
                         It is a non-profit demonstration of web development skills and technologies.
-                        All assets, including 3D models, music, and sound effects are used only for educational
+                        All assets, including 3D models, music and sound effects are used only for educational
                         demonstration. No commercial infringement is intended.
+                        You can visit the artist's profile to support their work clicking on their names.
                     </p>
                 </section>
 
@@ -113,7 +114,6 @@ function Legal() {
                         <li className={styles.creditItem}>
                             <span className={styles.creditRole}>Development</span>
                             <a href="https://github.com/Paburo99" target="_blank" rel="noopener noreferrer" className={styles.creditName}>[Paburo]</a>
-                            <span className={styles.creditName}> & </span>
                             <a href="https://github.com/Barbosa-16" target="_blank" rel="noopener noreferrer" className={styles.creditName}>[Dayanix]</a>
                         </li>
                     </ul>

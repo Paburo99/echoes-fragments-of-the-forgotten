@@ -304,3 +304,75 @@
 .toast.error {
     border-left: 5px solid var(--nier-alert);
 }
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+    .formContainer {
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 768px) {
+    .formContainer {
+        margin: 0 1rem;
+    }
+
+    .formTitle {
+        font-size: 1.5rem;
+    }
+
+    .formSubtitle {
+        font-size: 0.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .formGroup label {
+        font-size: 0.75rem;
+    }
+
+    .formGroup input,
+    .formGroup textarea,
+    .formGroup select {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+
+    .submitBtn {
+        padding: 0.9rem;
+        font-size: 0.9rem;
+    }
+
+    .toast {
+        width: 90%;
+        left: 5%;
+        bottom: 1rem;
+        padding: 1rem;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .formContainer {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .formTitle {
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+    }
+
+    .formSubtitle {
+        font-size: 0.7rem;
+    }
+
+    .formGroup {
+        margin-bottom: 1.5rem;
+    }
+
+    .backLink {
+        margin-top: 1.5rem;
+    }
+}

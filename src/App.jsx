@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
@@ -30,14 +31,34 @@ function MusicButton() {
 }
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <BrowserRouter>
       <AudioProvider>
-        <nav className={styles.nav}>
-          <Link to="/" className={styles.navLink}>HOME</Link>
-          <Link to="/about" className={styles.navLink}>ABOUT</Link>
-          <Link to="/form" className={styles.navLink}>FORM</Link>
-          <Link to="/legal" className={styles.navLink}>LEGAL</Link>
+        <button
+          className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
+          onClick={toggleMenu}
+          aria-label="Toggle navigation"
+        >
+          <span className={styles.bar}></span>
+          <span className={styles.bar}></span>
+          <span className={styles.bar}></span>
+        </button>
+
+        <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
+          <Link to="/" className={styles.navLink} onClick={closeMenu}>HOME</Link>
+          <Link to="/about" className={styles.navLink} onClick={closeMenu}>ABOUT</Link>
+          <Link to="/form" className={styles.navLink} onClick={closeMenu}>FORM</Link>
+          <Link to="/legal" className={styles.navLink} onClick={closeMenu}>LEGAL</Link>
         </nav>
 
         <MusicButton />
