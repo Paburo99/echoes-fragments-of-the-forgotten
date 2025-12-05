@@ -452,7 +452,7 @@
   justify-content: center;
 }
 
-.mobileNavButton::before {
+.mobileNavControl::before {
   content: "";
   position: absolute;
   top: 1px;
@@ -463,7 +463,7 @@
   border-right: 2px solid var(--nier-rust);
 }
 
-.mobileNavButton::after {
+.mobileNavControl::after {
   content: "";
   position: absolute;
   bottom: 1px;

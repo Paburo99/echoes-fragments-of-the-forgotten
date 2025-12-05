@@ -327,7 +327,7 @@ function Home() {
     const handleReachEnd = useCallback(() => {
         setTimeout(() => {
             navigate('/about');
-        }, 2000);
+        }, 3000);
     }, [navigate]);
 
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);

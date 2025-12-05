@@ -56,7 +56,7 @@ function MemoryShard({ position, color, onClick, clickable = true }) {
                     document.body.style.cursor = 'auto';
                 }
             }}
-            scale={0.35}
+            scale={0.4}
         >
             <primitive object={clone} />
         </group>
