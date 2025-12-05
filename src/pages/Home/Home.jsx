@@ -107,10 +107,11 @@ const EMOTION_COLORS = {
 };
 
 // Snap points for each shard (matching SHARD_CONFIGS t values)
-const SNAP_POINTS = [0.2, 0.4, 0.6, 0.8];
+const SNAP_POINTS = [0, 0.2, 0.4, 0.6, 0.8, 1.0];
 const SNAP_THRESHOLD = 0.12; // How close to snap point before snapping
 
-function CameraHandler({ isMobile, onReachEnd }) {
+// Desktop Camera Handler - uses scroll with snapping
+function CameraHandler({ onReachEnd }) {
     const scroll = useScroll();
     const hasTriggeredEnd = useRef(false);
 
@@ -181,6 +182,50 @@ function CameraHandler({ isMobile, onReachEnd }) {
         state.camera.lookAt(smoothedLookAt.current);
 
         if (scroll.offset >= 0.98 && !hasTriggeredEnd.current) {
+            hasTriggeredEnd.current = true;
+            if (onReachEnd) onReachEnd();
+        }
+    });
+    return null;
+}
+
+// Mobile Camera Handler - uses button navigation
+function MobileCameraHandler({ targetShardIndex, onReachEnd }) {
+    const hasTriggeredEnd = useRef(false);
+
+    const smoothedPosition = useRef(new THREE.Vector3());
+    const smoothedLookAt = useRef(new THREE.Vector3());
+    const isInitialized = useRef(false);
+    const currentOffset = useRef(0);
+
+    const curve = useMemo(() => createSpiralCurve(), []);
+
+    useFrame((state, delta) => {
+        // Calculate target offset based on shard index
+        const targetOffset = SNAP_POINTS[targetShardIndex] || 0;
+
+        // Smoothly interpolate to target offset
+        currentOffset.current += (targetOffset - currentOffset.current) * 0.03;
+
+        const targetPoint = curve.getPoint(currentOffset.current);
+        const targetLookAt = new THREE.Vector3(0, 0, 0);
+
+        if (!isInitialized.current) {
+            smoothedPosition.current.copy(targetPoint);
+            smoothedLookAt.current.copy(targetLookAt);
+            currentOffset.current = 0;
+            isInitialized.current = true;
+        }
+
+        const smoothFactor = 1 - Math.pow(0.05, delta);
+
+        smoothedPosition.current.lerp(targetPoint, smoothFactor);
+        smoothedLookAt.current.lerp(targetLookAt, smoothFactor);
+
+        state.camera.position.copy(smoothedPosition.current);
+        state.camera.lookAt(smoothedLookAt.current);
+
+        if (targetShardIndex >= SNAP_POINTS.length - 1 && !hasTriggeredEnd.current) {
             hasTriggeredEnd.current = true;
             if (onReachEnd) onReachEnd();
         }
@@ -286,6 +331,7 @@ function Home() {
     }, [navigate]);
 
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [currentShardIndex, setCurrentShardIndex] = useState(0);
 
     useEffect(() => {
         const handleResize = () => {
@@ -294,6 +340,18 @@ function Home() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    const handleNextShard = useCallback(() => {
+        if (currentShardIndex < SNAP_POINTS.length - 1) {
+            setCurrentShardIndex(prev => prev + 1);
+        }
+    }, [currentShardIndex]);
+
+    const handlePrevShard = useCallback(() => {
+        if (currentShardIndex > 0) {
+            setCurrentShardIndex(prev => prev - 1);
+        }
+    }, [currentShardIndex]);
 
     return (
         <div className={styles.homeContainer}>
@@ -308,16 +366,41 @@ function Home() {
                 </p>
             </div>
 
-            {/* Instructions */}
-            <aside className={styles.instructions}>
-                <div className={styles.instructionItem}>
-                    <p>[SCROLL] TO NAVIGATE RUINS</p>
-                </div>
+            {/* Instructions - Desktop only */}
+            {!isMobile && (
+                <aside className={styles.instructions}>
+                    <div className={styles.instructionItem}>
+                        <p>[SCROLL] TO NAVIGATE RUINS</p>
+                    </div>
 
-                <div className={styles.instructionItem}>
-                    <p>[CLICK] SHARDS TO DECRYPT MEMORY</p>
+                    <div className={styles.instructionItem}>
+                        <p>[CLICK] SHARDS TO DECRYPT MEMORY</p>
+                    </div>
+                </aside>
+            )}
+
+            {/* Mobile Navigation Controls */}
+            {isMobile && (
+                <div className={styles.mobileNavControl}>
+                    <button
+                        className={styles.mobileNavButton}
+                        onClick={handlePrevShard}
+                        disabled={currentShardIndex === 0}
+                    >
+                        &lt; PREV
+                    </button>
+
+                    <div className={styles.mobileNavDivider} />
+
+                    <button
+                        className={styles.mobileNavButton}
+                        onClick={handleNextShard}
+                        disabled={currentShardIndex >= SNAP_POINTS.length - 1}
+                    >
+                        NEXT &gt;
+                    </button>
                 </div>
-            </aside>
+            )}
 
             {/* --- Memory Modal --- */}
             {activeMemory && (
@@ -351,11 +434,19 @@ function Home() {
                 {/* DEV MODE: Free camera controls */}
                 {DEV_MODE && <OrbitControls makeDefault />}
 
-                {/* PRODUCTION MODE: Scroll-controlled camera */}
-                {!DEV_MODE && (
+                {/* PRODUCTION MODE: Desktop scroll-controlled camera */}
+                {!DEV_MODE && !isMobile && (
                     <ScrollControls pages={1} damping={0.5}>
-                        <CameraHandler isMobile={isMobile} onReachEnd={handleReachEnd} />
+                        <CameraHandler onReachEnd={handleReachEnd} />
                     </ScrollControls>
+                )}
+
+                {/* PRODUCTION MODE: Mobile button-controlled camera */}
+                {!DEV_MODE && isMobile && (
+                    <MobileCameraHandler
+                        targetShardIndex={currentShardIndex}
+                        onReachEnd={handleReachEnd}
+                    />
                 )}
 
                 <Suspense fallback={<Loader />}>

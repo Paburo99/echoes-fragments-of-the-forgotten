@@ -407,3 +407,84 @@
     font-size: 1.2rem;
   }
 }
+
+/* Mobile Navigation Controls */
+.mobileNavControl {
+  position: fixed;
+  bottom: 2rem;
+  left: 1rem;
+
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(10, 10, 10, 0.85);
+
+  border: 1px solid var(--nier-beige);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(220, 216, 192, 0.1);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.mobileNavDivider {
+  width: 1px;
+  height: 20px;
+  background: var(--nier-beige);
+  opacity: 0.5;
+}
+
+.mobileNavButton {
+  background: transparent;
+  border: none;
+  color: var(--nier-beige);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileNavButton::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--nier-rust);
+  border-right: 2px solid var(--nier-rust);
+}
+
+.mobileNavButton::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid var(--nier-rust);
+  border-left: 2px solid var(--nier-rust);
+}
+
+.mobileNavButton:hover:not(:disabled) {
+  text-shadow: 0 0 8px var(--nier-beige);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.mobileNavButton:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.mobileNavButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
