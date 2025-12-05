@@ -143,7 +143,7 @@ function CameraHandler({ isMobile, onReachEnd }) {
             if (distanceToSnap < SNAP_THRESHOLD) {
                 isNearSnapPoint = true;
                 // Only snap if scroll velocity is low (user stopped scrolling)
-                if (Math.abs(velocitySmooth.current) < 0.0008) {
+                if (Math.abs(velocitySmooth.current) < 0.008) {
                     targetOffset = snapPoint;
                 }
                 break;
