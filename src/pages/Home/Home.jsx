@@ -6,7 +6,7 @@ import { supabase } from '../../lib/supabase';
 import { useAudio } from '../../context/AudioContext';
 import * as THREE from 'three';
 import MemoryShard from '../../components/3d/MemoryShard';
-import Stronghold from '../../components/3d/Stronghold';
+import Ruins from '../../components/3d/Ruins';
 import Loader from '../../components/ui/Loader';
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
 import styles from './Home.module.css';
@@ -326,7 +326,7 @@ function Home() {
     // Callback when scroll reaches the final point
     const handleReachEnd = useCallback(() => {
         setTimeout(() => {
-            navigate('/about');
+            navigate('/archive');
         }, 3000);
     }, [navigate]);
 
@@ -450,7 +450,7 @@ function Home() {
                 )}
 
                 <Suspense fallback={<Loader />}>
-                    <Stronghold position={[0, 0, 0]} scale={1} />
+                    <Ruins position={[0, 0, 0]} scale={1} />
                 </Suspense>
 
 

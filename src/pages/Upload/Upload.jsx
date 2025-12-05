@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import gsap from 'gsap';
-import styles from './Form.module.css';
-import bgImage from '../../assets/images/bg_form.avif';
+import styles from './Upload.module.css';
+import bgImage from '../../assets/images/bg_upload.avif';
 
-function Form() {
+function Upload() {
   const [formData, setFormData] = useState({
     name: '',
     memory: '',
@@ -171,4 +171,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default Upload;

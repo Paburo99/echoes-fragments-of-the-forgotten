@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { useAnimations, useGLTF, TransformControls } from '@react-three/drei';
+import { useAnimations, useGLTF } from '@react-three/drei';
 import { useFrame, createPortal } from '@react-three/fiber';
 import * as THREE from 'three';
 import MemoryShard from './MemoryShard';

@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
-import styles from './About.module.css';
-import bgHero from '../../assets/images/bg_about.avif';
+import styles from './Archive.module.css';
+import bgHero from '../../assets/images/bg_archive.avif';
 import PixelatedReveal from '../../components/ui/PixelatedReveal';
 
 const GALLERY_IMAGES = [
@@ -13,7 +13,7 @@ const GALLERY_IMAGES = [
   '/gallery/shot2.mipmap.w1920.avif',
   '/gallery/shot6.mipmap.w1920.avif',
   '/gallery/shot0.mipmap.w1920.webp',
-  '/gallery/shot7.mipmap.w1920.avif'
+  '/gallery/f1tt5nxa30u61.jpg'
 ];
 
 const ROADMAP = [
@@ -24,7 +24,7 @@ const ROADMAP = [
   { status: 'pending', label: 'Full Release' },
 ];
 
-export default function About() {
+export default function Archive() {
   const [selectedImage, setSelectedImage] = useState(null);
   const heroRef = useRef(null);
   const heroTitleRef = useRef(null);
@@ -221,7 +221,7 @@ export default function About() {
             Your memories are the only thing that remains.<br />
             Entrust them to the archive, and they will never fade.
           </p>
-          <Link to="/form" className={styles.ctaButton}>
+          <Link to="/upload" className={styles.ctaButton}>
             SAVE_A_MEMORY
           </Link>
         </div>
@@ -237,8 +237,9 @@ export default function About() {
 
           <nav className={styles.footerNav}>
             <Link to="/">[HOME]</Link>
-            <Link to="/about">[ARCHIVE]</Link>
-            <Link to="/form">[UPLOAD]</Link>
+            <Link to="/archive">[ARCHIVE]</Link>
+            <Link to="/upload">[UPLOAD]</Link>
+            <Link to="/legal">[LEGAL]</Link>
           </nav>
 
           <p className={styles.footerCopyright}>

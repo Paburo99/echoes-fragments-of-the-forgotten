@@ -413,8 +413,7 @@
   position: fixed;
   bottom: 2rem;
   left: 1rem;
-
-  z-index: 100;
+  z-index: 70;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -98,9 +98,10 @@ function Legal() {
                     <h2 className={styles.sectionTitle}>Credits</h2>
                     <ul className={styles.creditsList}>
                         <li className={styles.creditItem}>
-                            <span className={styles.creditRole}>3D Models & Environment</span>
+                            <span className={styles.creditRole}>3D Models, Environment & Gallery</span>
                             <a href="https://sketchfab.com/navaza" target="_blank" rel="noopener noreferrer" className={styles.creditName}>[NAVAZA]</a>
                             <a href="https://sketchfab.com/satanahuman" target="_blank" rel="noopener noreferrer" className={styles.creditName}>[SATANAHUMAN]</a>
+                            <a href="https://sketchfab.com/naomihikarid" target="_blank" rel="noopener noreferrer" className={styles.creditName}>[CONRAD JUSTIN]</a>
                         </li>
                         <li className={styles.creditItem}>
                             <span className={styles.creditRole}>Music</span>

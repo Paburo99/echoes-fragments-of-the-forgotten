@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home/Home';
-import About from './pages/About/About';
-import Form from './pages/Form/Form';
+import Archive from './pages/Archive/Archive';
+import Upload from './pages/Upload/Upload';
 import Legal from './pages/Legal/Legal';
 import { AudioProvider, useAudio } from './context/AudioContext';
 import styles from './App.module.css';
@@ -56,8 +56,8 @@ function App() {
 
         <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
           <Link to="/" className={styles.navLink} onClick={closeMenu}>HOME</Link>
-          <Link to="/about" className={styles.navLink} onClick={closeMenu}>ABOUT</Link>
-          <Link to="/form" className={styles.navLink} onClick={closeMenu}>FORM</Link>
+          <Link to="/archive" className={styles.navLink} onClick={closeMenu}>ARCHIVE</Link>
+          <Link to="/upload" className={styles.navLink} onClick={closeMenu}>UPLOAD</Link>
           <Link to="/legal" className={styles.navLink} onClick={closeMenu}>LEGAL</Link>
         </nav>
 
@@ -65,8 +65,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/form" element={<Form />} />
+          <Route path="/archive" element={<Archive />} />
+          <Route path="/upload" element={<Upload />} />
           <Route path="/legal" element={<Legal />} />
         </Routes>
       </AudioProvider>
