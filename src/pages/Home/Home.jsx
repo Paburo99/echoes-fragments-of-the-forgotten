@@ -106,6 +106,10 @@ const EMOTION_COLORS = {
     anger: "#F4320B"
 };
 
+// Snap points for each shard (matching SHARD_CONFIGS t values)
+const SNAP_POINTS = [0.2, 0.4, 0.6, 0.8];
+const SNAP_THRESHOLD = 0.12; // How close to snap point before snapping
+
 function CameraHandler({ isMobile, onReachEnd }) {
     const scroll = useScroll();
     const hasTriggeredEnd = useRef(false);
@@ -114,12 +118,44 @@ function CameraHandler({ isMobile, onReachEnd }) {
     const smoothedLookAt = useRef(new THREE.Vector3());
     const isInitialized = useRef(false);
 
+    // For snapping behavior
+    const snappedOffset = useRef(0);
+    const lastRawOffset = useRef(0);
+    const velocitySmooth = useRef(0);
+
     // Define the path points
     const curve = useMemo(() => createSpiralCurve(), []);
 
     useFrame((state, delta) => {
+        const rawOffset = scroll.offset;
 
-        const targetPoint = curve.getPoint(scroll.offset);
+        // Calculate smoothed scroll velocity for more stable detection
+        const scrollDelta = rawOffset - lastRawOffset.current;
+        velocitySmooth.current = velocitySmooth.current * 0.9 + scrollDelta * 0.1;
+        lastRawOffset.current = rawOffset;
+
+        // Find if we're near a snap point
+        let targetOffset = rawOffset;
+        let isNearSnapPoint = false;
+
+        for (const snapPoint of SNAP_POINTS) {
+            const distanceToSnap = Math.abs(rawOffset - snapPoint);
+            if (distanceToSnap < SNAP_THRESHOLD) {
+                isNearSnapPoint = true;
+                // Only snap if scroll velocity is low (user stopped scrolling)
+                if (Math.abs(velocitySmooth.current) < 0.0008) {
+                    targetOffset = snapPoint;
+                }
+                break;
+            }
+        }
+
+        // Smoothly interpolate to target offset - very smooth easing
+        const offsetLerpFactor = isNearSnapPoint ? 0.02 : 0.04;
+        snappedOffset.current += (targetOffset - snappedOffset.current) * offsetLerpFactor;
+
+        // Use snapped offset for camera position
+        const targetPoint = curve.getPoint(snappedOffset.current);
 
         // Calculate target look-at point
         const targetLookAt = new THREE.Vector3(0, 0, 0);
@@ -128,12 +164,13 @@ function CameraHandler({ isMobile, onReachEnd }) {
         if (!isInitialized.current) {
             smoothedPosition.current.copy(targetPoint);
             smoothedLookAt.current.copy(targetLookAt);
+            snappedOffset.current = rawOffset;
             isInitialized.current = true;
         }
 
         // Smoothing factor (lower = smoother, higher = more responsive)
         // Using delta to make it frame-rate independent
-        const smoothFactor = 1 - Math.pow(0.1, delta);
+        const smoothFactor = 1 - Math.pow(0.05, delta);
 
         // Smoothly interpolate position and lookAt
         smoothedPosition.current.lerp(targetPoint, smoothFactor);
@@ -316,7 +353,7 @@ function Home() {
 
                 {/* PRODUCTION MODE: Scroll-controlled camera */}
                 {!DEV_MODE && (
-                    <ScrollControls pages={2} damping={1}>
+                    <ScrollControls pages={1} damping={0.5}>
                         <CameraHandler isMobile={isMobile} onReachEnd={handleReachEnd} />
                     </ScrollControls>
                 )}
