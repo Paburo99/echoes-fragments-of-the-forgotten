@@ -75,7 +75,7 @@
   position: fixed;
   top: 2rem;
   right: 2rem;
-  z-index: 100;
+  z-index: 90;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -131,7 +131,7 @@
     transition: transform 0.3s ease-in-out;
     padding: 0;
     gap: 3rem;
-    z-index: 90;
+    z-index: 80;
   }
 
   .nav.open {

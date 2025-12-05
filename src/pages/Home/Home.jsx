@@ -316,7 +316,7 @@ function Home() {
 
                 {/* PRODUCTION MODE: Scroll-controlled camera */}
                 {!DEV_MODE && (
-                    <ScrollControls pages={3} damping={0.5}>
+                    <ScrollControls pages={2} damping={1}>
                         <CameraHandler isMobile={isMobile} onReachEnd={handleReachEnd} />
                     </ScrollControls>
                 )}
