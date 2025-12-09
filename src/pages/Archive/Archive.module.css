@@ -1,6 +1,6 @@
 .aboutPage {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
     background-color: var(--nier-beige);
     color: var(--nier-dark);
     font-family: 'Courier New', Courier, monospace;
@@ -41,7 +41,7 @@
 
 /* --- HERO SECTION --- */
 .heroSection {
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;

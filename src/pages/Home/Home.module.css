@@ -1,7 +1,7 @@
 .homeContainer {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
 }
 
 .homeContainer::before {
@@ -347,7 +347,7 @@
   .modalContent {
     padding: 1.5rem;
     width: 95%;
-    max-height: 80vh;
+    max-height: 80dvh;
     overflow-y: auto;
   }
 

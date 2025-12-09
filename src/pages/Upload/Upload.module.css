@@ -1,6 +1,6 @@
 .formPage {
     width: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
     background-color: var(--nier-black);
     color: var(--nier-beige);
     font-family: 'Courier New', Courier, monospace;
