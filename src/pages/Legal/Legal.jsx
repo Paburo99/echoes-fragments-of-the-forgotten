@@ -88,7 +88,7 @@ function Legal() {
                     <p className={styles.disclaimerText}>
                         This project, "ECHOES", is created solely for educational purposes.
                         It is a non-profit demonstration of web development skills and technologies.
-                        All assets, including 3D models, music and sound effects are used only for educational
+                        All assets, including 3D models, pictures, music and sound effects are used only for educational
                         demonstration. No commercial infringement is intended.
                         You can visit the artist's profile to support their work clicking on their names.
                     </p>
@@ -101,7 +101,7 @@ function Legal() {
                             <span className={styles.creditRole}>3D Models, Environment & Gallery</span>
                             <a href="https://sketchfab.com/navaza" target="_blank" rel="noopener noreferrer" className={styles.creditName}>[NAVAZA]</a>
                             <a href="https://sketchfab.com/satanahuman" target="_blank" rel="noopener noreferrer" className={styles.creditName}>[SATANAHUMAN]</a>
-                            <a href="https://sketchfab.com/naomihikarid" target="_blank" rel="noopener noreferrer" className={styles.creditName}>[CONRAD JUSTIN]</a>
+                            <a href="https://sketchfab.com/ConradJustin" target="_blank" rel="noopener noreferrer" className={styles.creditName}>[CONRAD JUSTIN]</a>
                         </li>
                         <li className={styles.creditItem}>
                             <span className={styles.creditRole}>Music</span>
